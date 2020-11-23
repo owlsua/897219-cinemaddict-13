@@ -1,5 +1,34 @@
 import {getRandomInteger} from '../utils.js';
 
+const genTitle = () => {
+  const titles = [
+    `The Seven Samurai`,
+    `Bonnie and Clyde`,
+    `Reservoir Dogs`,
+    `Airplane!`,
+    `Pans Labyrinth`,
+    `Doctor Zhivago`,
+    `The Deer Hunter`,
+    `Close Encounters of the Third Kind`,
+    `Up`,
+    `Rocky`,
+    `Memento`,
+    `Braveheart`,
+    `Slumdog Millionaire`,
+    `The Lord of the Rings: The Return of the King`,
+    `Beauty and the Beast`,
+    `Seven`,
+    `Inception`,
+    `Die Hard`,
+    `The Lord of the Rings: The Fellowship of the Ring`,
+    `Amadeus`
+  ];
+
+  const randomIndex = getRandomInteger(0, titles.length - 1);
+
+  return titles[randomIndex];
+};
+
 const generateDescription = () => {
   const descriptions = [
     `Lorem ipsum dolor sit amet, consectetur adipiscing elit.`,
@@ -28,10 +57,45 @@ const generateDescription = () => {
   return finalDescription;
 };
 
+const genImage = () => {
+  const images = [
+    `made-for-each-other.png`,
+    `popeye-meets-sinbad.png`,
+    `sagebrush-trail.jpg`,
+    `santa-claus-conquers-the-martians.jpg`,
+    `the-dance-of-life.jpg`,
+    `the-great-flamarion.jpg`,
+    `the-man-with-the-golden-arm.jpg`,
+  ];
+
+  const randomIndex = getRandomInteger(0, images.length - 1);
+
+  return images[randomIndex];
+};
+
+// const genComment = () => {
+//   return {
+//     emogi: `/images/emoji/smile.png`,
+//     text: `Hi`,
+//     authorName: `Tim Cook`,
+//     date: `2019/12/31 23:59`,
+//   };
+// };
+
 export const generateFilmItem = () => {
   return {
-    title: `The dance of life`,
-    image: `../../public/images/posters/the-dance-of-life.jpg`,
+    title: genTitle(),
+    rating: getRandomInteger(1, 10),
+    director:	`Anthony Mann`,
+    writers: `Anne Wigton, Heinz Herald, Richard Weil`,
+    actors:	`Erich von Stroheim, Mary Beth Hughes, Dan Duryea`,
+    date:	`30 March 1945`,
+    year: getRandomInteger(1930, 2020),
+    country: `USA`,
+    duration: `1 hour 55 min`,
+    genre: `Action`,
+    comments: getRandomInteger(1, 10),
+    image: genImage(),
     description: generateDescription(),
   };
 };

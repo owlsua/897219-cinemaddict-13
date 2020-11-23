@@ -5,6 +5,7 @@ import {createMainListSortTemplate} from "./view/main-list-sort.js";
 import {createMainFilmContainerTemplate} from "./view/main-films-container.js";
 import {createFilmCardTemplate} from "./view/main-film-card.js";
 import {createFilmDetailPopupTemplate} from "./view/film-detail-popup.js";
+// import {generateFilmItem} from "./mock/film.js";
 
 const MAIN_TASK_COUNT = 5;
 const SECONDARY_TASK_COUNT = 2;
