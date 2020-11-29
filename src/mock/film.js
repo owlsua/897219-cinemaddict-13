@@ -73,28 +73,57 @@ const genImage = () => {
   return images[randomIndex];
 };
 
-// const genComment = () => {
-//   return {
-//     emogi: `/images/emoji/smile.png`,
-//     text: `Hi`,
-//     authorName: `Tim Cook`,
-//     date: `2019/12/31 23:59`,
-//   };
-// };
+const genDate = () => {
+  const filmDay = getRandomInteger(1, 30);
+  const FilmYear = getRandomInteger(1930, 2020);
+
+  return {
+    day: filmDay,
+    year: FilmYear
+  };
+};
+
+const commentsArr = [
+  {
+    emogi: `smile`,
+    text: `Hi`,
+    authorName: `Tim C`,
+    addDate: `2019/12/31 23:59`,
+  },
+  {
+    emogi: `angry`,
+    text: `wow`,
+    authorName: `Chester B`,
+    addDate: `2020/10/22 11:37`,
+  },
+  {
+    emogi: `puke`,
+    text: `hoho`,
+    authorName: `Elon M`,
+    addDate: `2015/06/20 10:40`,
+  },
+];
+
+const genresArr = [
+  `Action`,
+  `Comedy`,
+];
 
 export const generateFilmItem = () => {
+  const filmDate = genDate();
+
   return {
     title: genTitle(),
     rating: getRandomInteger(1, 10),
     director:	`Anthony Mann`,
     writers: `Anne Wigton, Heinz Herald, Richard Weil`,
     actors:	`Erich von Stroheim, Mary Beth Hughes, Dan Duryea`,
-    date:	`30 March 1945`,
-    year: getRandomInteger(1930, 2020),
+    date:	filmDate.day + ` March ` + filmDate.year,
+    year: filmDate.year,
     country: `USA`,
     duration: `1 hour 55 min`,
-    genre: `Action`,
-    comments: getRandomInteger(1, 10),
+    genres: genresArr,
+    comments: commentsArr,
     image: genImage(),
     description: generateDescription(),
   };
