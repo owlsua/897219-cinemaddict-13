@@ -1,14 +1,14 @@
 import {createHeaderProfileTemplate} from "./view/header-profile.js";
 import {createMainMenuTemplate} from "./view/main-navigation.js";
-// import {createMainStatisticTemplate} from "./view/main-statistic.js";
+import {createMainStatisticTemplate} from "./view/main-statistic.js";
 import {createMainListSortTemplate} from "./view/main-list-sort.js";
 import {createMainFilmContainerTemplate} from "./view/main-films-container.js";
 import {createFilmCardTemplate} from "./view/main-film-card.js";
 import {createFooterStatisticsTemplate} from "./view/footer-statistics.js";
-import {createFilmDetailPopupTemplate} from "./view/film-detail-popup.js";
+// import {createFilmDetailPopupTemplate} from "./view/film-detail-popup.js";
 import {generateFilmItem} from "./mock/film.js";
+import {generateUserStatistic} from "./mock/userStatistics.js";
 import {getRandomInteger} from "./utils.js";
-
 
 const ALL_FILM_COUNT = 20;
 const MAIN_FILM_COUNT = 5;
@@ -19,6 +19,7 @@ const render = (container, template, place) => {
 };
 
 const films = new Array(ALL_FILM_COUNT).fill().map(generateFilmItem);
+const statistics = new Array(1).fill().map(generateUserStatistic);
 
 const film = (filmsArr) => {
   const index = getRandomInteger(0, filmsArr.length - 1);
@@ -29,13 +30,12 @@ const film = (filmsArr) => {
 const siteHeaderElement = document.querySelector(`.header`);
 const siteMainElement = document.querySelector(`.main`);
 const footerStatisticsElements = document.querySelector(`.footer__statistics`);
-const siteBody = document.querySelector(`body`);
+// const siteBody = document.querySelector(`body`);
 
-
-render(siteHeaderElement, createHeaderProfileTemplate(), `beforeend`);
+render(siteHeaderElement, createHeaderProfileTemplate(statistics[0]), `beforeend`);
 render(siteMainElement, createMainMenuTemplate(), `beforeend`);
 render(siteMainElement, createMainListSortTemplate(), `beforeend`);
-// render(siteMainElement, createMainStatisticTemplate(), `beforeend`);
+render(siteMainElement, createMainStatisticTemplate(statistics[0]), `beforeend`);
 render(siteMainElement, createMainFilmContainerTemplate(), `beforeend`);
 render(footerStatisticsElements, createFooterStatisticsTemplate(films), `beforeend`);
 
@@ -55,5 +55,5 @@ for (let i = 0; i < SECONDARY_FILM_COUNT; i++) {
   render(commentedFilmListContainer, createFilmCardTemplate(film(films)), `beforeend`);
 }
 
-render(siteBody, createFilmDetailPopupTemplate(films[0]), `beforeend`);
+// render(siteBody, createFilmDetailPopupTemplate(films[0]), `beforeend`);
 

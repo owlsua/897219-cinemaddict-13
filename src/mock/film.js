@@ -126,5 +126,8 @@ export const generateFilmItem = () => {
     comments: commentsArr,
     image: genImage(),
     description: generateDescription(),
+    watchlist: getRandomInteger(0, 1),
+    history: getRandomInteger(0, 1),
+    favorite: getRandomInteger(0, 1),
   };
 };
