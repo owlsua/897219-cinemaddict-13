@@ -6,7 +6,7 @@ import {createMainFilmContainerTemplate} from "./view/main-films-container.js";
 import {createFilmCardTemplate} from "./view/main-film-card.js";
 import {createFooterStatisticsTemplate} from "./view/footer-statistics.js";
 import {createShowMoreFilmsBottunTemplate} from "./view/show-more-films-button.js";
-// import {createFilmDetailPopupTemplate} from "./view/film-detail-popup.js";
+import {createFilmDetailPopupTemplate} from "./view/film-detail-popup.js";
 import {generateFilmItem} from "./mock/film.js";
 import {generateUserStatistic} from "./mock/userStatistics.js";
 import {getRandomInteger} from "./utils.js";
@@ -35,7 +35,7 @@ const filters = generateFilter(films);
 const siteHeaderElement = document.querySelector(`.header`);
 const siteMainElement = document.querySelector(`.main`);
 const footerStatisticsElements = document.querySelector(`.footer__statistics`);
-// const siteBody = document.querySelector(`body`);
+const siteBody = document.querySelector(`body`);
 
 render(siteHeaderElement, createHeaderProfileTemplate(statistics[0]), `beforeend`);
 render(siteMainElement, createMainNavigationTemplate(filters), `beforeend`);
@@ -61,7 +61,7 @@ for (let i = 0; i < SECONDARY_FILM_COUNT; i++) {
   render(commentedFilmListContainer, createFilmCardTemplate(filmItem(films)), `beforeend`);
 }
 
-// render(siteBody, createFilmDetailPopupTemplate(films[0]), `beforeend`);
+render(siteBody, createFilmDetailPopupTemplate(films[0]), `beforeend`);
 
 if (films.length > FILMS_COUNT_PER_STEP) {
   let renderedFilmCount = FILMS_COUNT_PER_STEP;
