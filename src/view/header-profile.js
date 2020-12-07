@@ -1,5 +1,6 @@
-import {genUserRank} from "../utils.js";
-export const createHeaderProfileTemplate = (statistics) => {
+import {genUserRank, createElement} from "../utils.js";
+
+const createHeaderProfileTemplate = (statistics) => {
   const {movies} = statistics;
 
   const rank = genUserRank(movies);
@@ -11,3 +12,25 @@ export const createHeaderProfileTemplate = (statistics) => {
   </section>
   `;
 };
+
+export default class HeaderProfile {
+  constructor(statistics) {
+    this._element = null;
+    this._statistics = statistics;
+  }
+
+  getTemplate() {
+    return createHeaderProfileTemplate(this._statistics);
+  }
+
+  getElement() {
+    if (!this._element) {
+      this._element = createElement(this.getTemplate());
+    }
+    return this._element;
+  }
+
+  removeElement() {
+    this._element = null;
+  }
+}
